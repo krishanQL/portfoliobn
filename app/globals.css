@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+  --color-void: #070b14;
+  --color-ink: #e7ebf3;
+  --color-muted: #9aa4b8;
+  --color-faint: #6b7589;
+  --color-line: rgb(148 163 184 / 0.16);
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-flow: flow 2.4s linear infinite;
+  --animate-type-in: type-in 0.45s ease-out both;
+  --animate-orbit-pulse: orbit-pulse 1.8s ease-in-out infinite;
+
+  @keyframes caret {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    50.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes flow {
+    from {
+      background-position: 0% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes type-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes orbit-pulse {
+    0%,
+    100% {
+      transform: scale(0.85);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+}
+
+@utility glass {
+  background: linear-gradient(180deg, rgb(14 20 34 / 0.9), rgb(9 13 24 / 0.88));
+  border: 1px solid rgb(148 163 184 / 0.16);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.04) inset,
+    0 32px 80px -32px rgb(0 0 0 / 0.85);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+@utility glass-soft {
+  background: rgb(12 18 31 / 0.7);
+  border: 1px solid rgb(148 163 184 / 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@utility scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(148 163 184 / 0.3) transparent;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-void);
+  color: var(--color-ink);
+  overscroll-behavior: none;
+}
+
+body {
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(126 166 255 / 0.35);
+  color: #fff;
+}
+
+canvas {
+  touch-action: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid rgb(126 166 255 / 0.8);
+  outline-offset: 2px;
+}
